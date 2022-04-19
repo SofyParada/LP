@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+
+//holi
+
 typedef struct Unario {
     // arreglo de ’0’ y ’1’
     char* bits;
