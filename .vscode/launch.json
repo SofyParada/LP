@@ -4,7 +4,20 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-    
+        {
+            "type": "java",
+            "name": "Launch Javation",
+            "request": "launch",
+            "mainClass": "Tareas.Tarea3.src.Tarea3.Javation",
+            "projectName": "L.P_afc1e9f5"
+        },
+        {
+            "type": "java",
+            "name": "Launch Javation2",
+            "request": "launch",
+            "mainClass": "Tareas.Tarea3.Javation2",
+            "projectName": "L.P_afc1e9f5"
+        },
         {
             "type": "java",
             "name": "Launch Javation",
