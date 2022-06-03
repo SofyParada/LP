@@ -1,4 +1,4 @@
-package Tareas.Tarea3.src.Tarea3;
+package Tarea3;
 
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class Herrería extends Edificio{
         int hierro = 0;
         int cientificos = 0;
         int noHerreros = 0;
-        for(int j = 0; j < getListPersonas().size() - 1; j++){
+        for(int j = 0; j < getListPersonas().size(); j++){
             if(!(getListPersonas().get(j) instanceof Herrero)){
                 noHerreros++;
             }
@@ -30,15 +30,24 @@ public class Herrería extends Edificio{
             }
         }
 
-        for(int i = 0; i < getListPersonas().size() - 1; i++){
+        for(int i = 0; i < getListPersonas().size(); i++){
             javalares = javalares + es_herrero(getListPersonas().get(i))*getListPersonas().get(i).trabajo_realizado();
             hierro = hierro + es_herrero(getListPersonas().get(i))*getListPersonas().get(i).trabajo_realizado();
             tecnologia = tecnologia + es_cientifico(getListPersonas().get(i))*getListPersonas().get(i).trabajo_realizado()*(1/3);
         }
-        javalares = javalares / getListPersonas().size();
-        hierro = hierro / noHerreros;
-        tecnologia = tecnologia / cientificos;
-
+        javalares = (int)Math.floorDiv(javalares, getListPersonas().size());
+        if(noHerreros != 0){
+            hierro = (int)Math.floorDiv(hierro, noHerreros);
+        }
+        else{
+            hierro = 0;
+        }
+        if(cientificos != 0){
+            tecnologia = (int)Math.floorDiv(tecnologia, cientificos);
+        }
+        else{
+            tecnologia = 0;
+        }
         producir.add(0, javalares);
         producir.add(1, hierro);
         producir.add(2, trigo);

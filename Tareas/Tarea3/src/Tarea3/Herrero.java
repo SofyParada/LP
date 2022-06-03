@@ -1,4 +1,4 @@
-package Tareas.Tarea3.src.Tarea3;
+package Tarea3;
 
 public class Herrero extends Persona{
     public Herrero(String nombre, int edad, int nivel, int productividad){
@@ -6,7 +6,7 @@ public class Herrero extends Persona{
     }
     
     public  void mejorar(){
-        setnombre(getnombre() + 1);
+        setNivel(getnivel() + 1);
         setProductividad(getProductividad() + 3);
     }
 

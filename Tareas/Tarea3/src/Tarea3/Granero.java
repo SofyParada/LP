@@ -1,4 +1,4 @@
-package Tareas.Tarea3.src.Tarea3;
+package Tarea3;
 
 import java.util.ArrayList;
 
@@ -36,11 +36,11 @@ public  class Granero  extends Edificio{
                 javalares = javalares + getListPersonas().get(i).trabajo_realizado();
                 trigo = trigo + getListPersonas().get(i).trabajo_realizado();
             }
-            javalares = javalares / getListPersonas().size();
-            trigo = (trigo*2)/getListPersonas().size();
+            javalares = (int)Math.floorDiv(javalares, getListPersonas().size());
+            trigo = (int)Math.floor((trigo*2)/getListPersonas().size());
             
             if(cientificos != 0){
-                for(int j = 0; j < cientificos/2; j++){
+                for(int j = 0; j < (int)Math.floorDiv(cientificos, 2); j++){
                     tecnologia = tecnologia + 1;
                 }
             }

@@ -1,4 +1,4 @@
-package Tareas.Tarea3.src.Tarea3;
+package Tarea3;
 
 public class Granjero extends Persona{
     public Granjero(String nombre, int edad, int nivel, int productividad){
@@ -13,7 +13,7 @@ public class Granjero extends Persona{
     }
 
     public int trabajo_realizado(){
-        return (getProductividad()*2)+(getnivel()/2);
+        return (getProductividad()*2)+(int)Math.floorDiv(getnivel(), 2);
     }
     
 }

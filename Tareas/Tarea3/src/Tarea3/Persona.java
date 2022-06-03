@@ -1,4 +1,4 @@
-package Tareas.Tarea3.src.Tarea3;
+package Tarea3;
 
 public abstract class Persona{
     private String nombre;

@@ -1,4 +1,4 @@
-package Tareas.Tarea3.src.Tarea3;
+package Tarea3;
 
 public class Cientifico extends Persona{
     public Cientifico(String nombre, int edad, int nivel, int productividad){

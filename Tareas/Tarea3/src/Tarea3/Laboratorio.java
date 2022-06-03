@@ -1,4 +1,4 @@
-package Tareas.Tarea3.src.Tarea3;
+package Tarea3;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class Laboratorio extends Edificio{
         int hierro = 0;
         int cientificos = 0;
         int noCientificas = 0;
-        for(int j = 0; j < getListPersonas().size() - 1; j++ ){
+        for(int j = 0; j < getListPersonas().size(); j++ ){
             if(getListPersonas().get(j) instanceof Cientifico){
                 cientificos++;
             }
@@ -31,12 +31,12 @@ public class Laboratorio extends Edificio{
                 noCientificas++;
             }
         }
-        if(cientificos < ((3*getListPersonas().size())/4)){
-            for(int i = 0; i < getListPersonas().size() - 1 ; i++){
+        if(cientificos > (int)Math.floor((3*getListPersonas().size())/4)){
+            for(int i = 0; i < getListPersonas().size(); i++){
                 javalares = javalares + es_cientifico(getListPersonas().get(i))* getListPersonas().get(i).trabajo_realizado();
                 tecnologia = tecnologia + es_cientifico(getListPersonas().get(i))* getListPersonas().get(i).trabajo_realizado();
             }
-            javalares = (javalares*noCientificas)/ getListPersonas().size();
+            javalares = (int)Math.floor((javalares*noCientificas)/ getListPersonas().size());
         }
         else{
             javalares = javalares + getListPersonas().size()*-4;

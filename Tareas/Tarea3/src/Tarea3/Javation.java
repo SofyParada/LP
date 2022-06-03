@@ -1,5 +1,5 @@
 
-package Tareas.Tarea3.src.Tarea3;
+package Tarea3;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class Javation {
         ArrayList<Javapato> javapatos = new ArrayList<>();
         ArrayList<String> personasFallecidas = new ArrayList<>();
 
-        Jugador jugador = new Jugador(nombre, 30, 15, 10, 6, personasJugador, edificios, ferias, museos, javapatos);
+        Jugador jugador = new Jugador(nombre, 30, 30, 10, 6, personasJugador, edificios, ferias, museos, javapatos);
         System.out.println("Inicialmente tenemos " + jugador.getJavalares() + " Javalares, " + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
 
         
@@ -37,9 +37,9 @@ public class Javation {
                 if(Respuesta.equals("1")){
                     System.out.println("Ingrese el nombre de la Persona: ");
                     String nombrePersona = entrada.next();
-                    System.out.println("¿Que profesión tiene " + nombrePersona + "? Granjero/Cientifico/Herrero: ");
+                    System.out.println("¿Que profesión tiene " + nombrePersona + "? \n1.Granjero: 5 Javalares \n2.Cientifico: 8 Javalares\n3.Herrero: 6 Javalares\nResponda con el número correspondiente: ");
                     String profesion = entrada.next();
-                    if(profesion.equals("Granjero")){
+                    if(profesion.equals("1")){
                         if(jugador.getJavalares() >= 5){
                             Granjero granjero = new Granjero(nombrePersona, 15, 1, 8);
                             jugador.agregar_persona(granjero);
@@ -47,10 +47,10 @@ public class Javation {
                             System.out.println("Se ha creado el/la Granjero/a " +  nombrePersona + ".\nAhora tenemos " + jugador.getJavalares() + " Javalares, "  + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                         } 
                         else{
-                            System.out.println("No se puede comprar a Granjero");
+                            System.out.println("No se puede comprar el/la Granjero/a " + nombrePersona);
                         }
                     }
-                    else if(profesion.equals("Cientifico")){
+                    else if(profesion.equals("2")){
                         if(jugador.getJavalares() >= 8){
                             Cientifico cientifico = new Cientifico(nombrePersona, 24, 1, 10);
                             jugador.agregar_persona(cientifico);
@@ -58,10 +58,10 @@ public class Javation {
                             System.out.println("Se ha creado el/la Cientifico/a " +  nombrePersona + ".\nAhora tenemos " + jugador.getJavalares() + " Javalares, "  + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                         } 
                         else{
-                            System.out.println("No se puede comprar a Cientifico");
+                            System.out.println("No se puede comprar el/la Cientifico/a " + nombrePersona);
                         }
                     }
-                    else if(profesion.equals("Herrero")){
+                    else if(profesion.equals("3")){
                         if(jugador.getJavalares() >= 6){
                             Herrero herrero = new Herrero(nombrePersona, 18, 1, 9);
                             jugador.agregar_persona(herrero);
@@ -69,20 +69,20 @@ public class Javation {
                             System.out.println("Se ha creado el/la Herrero/a " +  nombrePersona + ".\nAhora tenemos " + jugador.getJavalares() + " Javalares, "  + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                         } 
                         else{
-                            System.out.println("No se puede comprar a Herrero");
+                            System.out.println("No se puede comprar el/la Herrero/a " + nombrePersona);
                         }
                     }
                     else{
-                        System.out.println("Nombre de persona ingresado no existe");
+                        System.out.println("Opción invalida, reintentar ");
                     }
                 }
 
                 else if(Respuesta.equals("2")){
                     System.out.println("Ingrese el nombre del Edificio: ");
                     String nombreEdificio = entrada.next();
-                    System.out.println("¿Que tipo de Edificio es " + nombreEdificio + "? Granero/Laboratorio/Herrería: ");
+                    System.out.println("¿Que tipo de Edificio es " + nombreEdificio + "? \n1.Granero: 10 Javalares, 5 Hierro y 5 Trigo \n2.Laboratorio: 30 Javalares y 10 Hierro\n3.Herrería: 20 Javalares y 20 Hierro\n4.ZonaComun:15 Javalares, 3 Hierro y 3 Trigo\nResponda con el número correspondiente: ");
                     String tipoEdificio = entrada.next();
-                    if(tipoEdificio.equals("Granero")){
+                    if(tipoEdificio.equals("1")){
                         if(jugador.getJavalares() >= 10 && jugador.getHierro() >= 5 && jugador.getTrigo() >= 5){
                             Granero granero = new Granero(nombreEdificio, 1, 10, personasGranero);
                             jugador.agregar_edificio(granero);
@@ -92,10 +92,10 @@ public class Javation {
                             System.out.println("Se ha creado el Granero " + nombreEdificio + ".\nAhora tenemos " + jugador.getJavalares() + " Javalares, " + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                         } 
                         else{
-                            System.out.println("No se puede comprar el Granero");
+                            System.out.println("No se puede comprar el Granero " + nombreEdificio);
                         }
                     } 
-                    else if(tipoEdificio.equals("Laboratorio")){
+                    else if(tipoEdificio.equals("2")){
                         if(jugador.getJavalares() >= 30 && jugador.getHierro() >= 10){
                             Laboratorio laboratorio = new Laboratorio(nombreEdificio, 1, 5, personasLabortorio);
                             jugador.agregar_edificio(laboratorio);
@@ -104,10 +104,10 @@ public class Javation {
                             System.out.println("Se ha creado el Laboratorio " + nombreEdificio + ".\nAhora tenemos " + jugador.getJavalares() + " Javalares, " + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                         } 
                         else{
-                            System.out.println("No se puede comprar el Laboratorio");
+                            System.out.println("No se puede comprar el Laboratorio " + nombreEdificio);
                         }
                     } 
-                    else if(tipoEdificio.equals("Herrería")){
+                    else if(tipoEdificio.equals("3")){
                         if(jugador.getJavalares() >= 20 && jugador.getHierro() >= 20){ 
                             Herrería herreria = new Herrería(nombreEdificio, 1, 8, personasHerreria);
                             jugador.agregar_edificio(herreria);
@@ -116,10 +116,10 @@ public class Javation {
                             System.out.println("Se ha creado la Herrería " + nombreEdificio + ".\nAhora tenemos " + jugador.getJavalares() + " Javalares, " + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                         } 
                         else{
-                            System.out.println("No se puede comprar el Herrería");
+                            System.out.println("No se puede comprar el Herrería " + nombreEdificio);
                         }
                     } 
-                    else if(tipoEdificio.equals("ZonaComun")){
+                    else if(tipoEdificio.equals("4")){
                         if(jugador.getJavalares() >= 15 && jugador.getHierro() >= 3 && jugador.getTrigo() >= 3){ 
                             ZonaComun zonacomun = new ZonaComun(nombreEdificio, 1, 6, personasZonaComun);                  
                             jugador.agregar_edificio(zonacomun);
@@ -129,7 +129,7 @@ public class Javation {
                             System.out.println("Se ha creado la ZonaComun " + nombreEdificio + ".\nAhora tenemos " + jugador.getJavalares() + " Javalares, " + jugador.getHierro() + " Hierro y" + jugador.getTrigo() + " Trigo.");
                         } 
                         else{
-                            System.out.println("No se puede comprar el ZonaComun");
+                            System.out.println("No se puede comprar el ZonaComun " + nombreEdificio);
                         }
                     }
                 }
@@ -137,9 +137,9 @@ public class Javation {
                 else if(Respuesta.equals("3")){
                     System.out.println("Ingrese el nombre de la Atraccion: ");
                     String nombreAtraccion = entrada.next();
-                    System.out.println("Que tipo de Atración es "+ nombreAtraccion + "? Feria/Museo/Javapato: ");
+                    System.out.println("Que tipo de Atración es "+ nombreAtraccion + "? \n1.Feria: 50 Javalares, 25 Hierro, 25 Trigo y 10 Tecnología\n2.Museo: 50 Javalares, 30 Hierro, 3 Trigo y 30 Tecnología\n3.Javapato: 50 Javalares, 40 Hierro y 20 Tecnología\nResponda con el número correspondiente: ");
                     String tipoAtraccion = entrada.next();
-                    if(tipoAtraccion.equals("Feria")){
+                    if(tipoAtraccion.equals("1")){
                         if(jugador.getJavalares() >= 50 && jugador.getHierro() >= 25 && jugador.getTrigo() >= 25 && jugador.getTecnologia() >= 10){
                             Feria feria = new Feria(nombreAtraccion);
                             jugador.agregar_feria(feria);
@@ -150,10 +150,10 @@ public class Javation {
                             System.out.println("Se ha creador la Feria " + nombreAtraccion + ".\nAhora tenemos " + jugador.getJavalares() + " Javalares, " + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                         } 
                         else{
-                            System.out.println("No se puede comprar la Feria");
+                            System.out.println("No se puede comprar la Feria " + nombreAtraccion);
                         }
                     } 
-                    else if(tipoAtraccion.equals("Museo")){
+                    else if(tipoAtraccion.equals("2")){
                         if(jugador.getJavalares() >= 50 && jugador.getHierro() >= 30 && jugador.getTrigo() >= 3 && jugador.getTecnologia() >= 30){
                             Museo museo = new Museo(nombreAtraccion);
                             jugador.agregar_Museo(museo);
@@ -164,10 +164,10 @@ public class Javation {
                             System.out.println("Se ha creador el Museo " + nombreAtraccion + ".\nAhora tenemos " + jugador.getJavalares() + " Javalares, " + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                         } 
                         else{
-                            System.out.println("No se puede comprar el Museo");
+                            System.out.println("No se puede comprar el Museo " + nombreAtraccion);
                         }
                     } 
-                    else if(tipoAtraccion.equals("Javapato")){
+                    else if(tipoAtraccion.equals("3")){
                         if(jugador.getJavalares() >= 50 && jugador.getHierro() >= 40 && jugador.getTecnologia() >= 20){
                             Javapato javapato = new Javapato(nombreAtraccion);
                             jugador.agregar_javapato(javapato);
@@ -177,7 +177,7 @@ public class Javation {
                             System.out.println("Se ha creador el Javapato " + nombreAtraccion + ".\nAhora tenemos " + jugador.getJavalares() + " Javalares, " + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                         } 
                         else{
-                            System.out.println("No se puede comprar el Javapato");
+                            System.out.println("No se puede comprar el Javapato " + nombreAtraccion);
                         }
                     }
                 }
@@ -194,7 +194,7 @@ public class Javation {
                                     System.out.println("Se ha mejorado el/la Grajero/a " + nombrePersonaMejora + ". Ahora su nivel es " + jugador.getListPersonas().get(i).getnivel() + " y su productividad es " + jugador.getListPersonas().get(i).getProductividad() + ".\nQuedan " + jugador.getJavalares() + " Javalares, "  + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                                 } 
                                 else{
-                                    System.out.println("No alcanza para mejorar al Granjero");
+                                    System.out.println("No alcanza para mejorar al/la Granjero/a " + nombrePersonaMejora);
                                 }
                             }
                             else if(jugador.getListPersonas().get(i) instanceof Cientifico){
@@ -204,7 +204,7 @@ public class Javation {
                                     System.out.println("Se ha mejorado el/la Cientifico/a " + nombrePersonaMejora + ". Ahora su nivel es " + jugador.getListPersonas().get(i).getnivel() + " y su productividad es " + jugador.getListPersonas().get(i).getProductividad() + ".\nQuedan " + jugador.getJavalares() + " Javalares, "  + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                                 } 
                                 else{
-                                    System.out.println("No alcanza para mejorar al Cientifico");
+                                    System.out.println("No alcanza para mejorar al/la Cientifico/a " + nombrePersonaMejora);
                                 }
                             }
                             else if(jugador.getListPersonas().get(i) instanceof Herrero){
@@ -214,7 +214,7 @@ public class Javation {
                                     System.out.println("Se ha mejorado el/la Herrero/a " + nombrePersonaMejora + ". Ahora su nivel es " + jugador.getListPersonas().get(i).getnivel() + " y su productividad es " + jugador.getListPersonas().get(i).getProductividad() + ".\nQuedan " + jugador.getJavalares() + " Javalares, "  + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                                 } 
                                 else{
-                                    System.out.println("No alcanza para mejorar al Herrero");
+                                    System.out.println("No alcanza para mejorar al/la Herrero/la " + nombrePersonaMejora);
                                 }
                             }
                         }
@@ -229,7 +229,7 @@ public class Javation {
                                         System.out.println("Se ha mejorado el/la Granjero/a " + nombrePersonaMejora +". Ahora su nivel es " + jugador.getListEdificios().get(x).getListPersonas().get(y).getnivel() + " y su productividad es " + jugador.getListEdificios().get(x).getListPersonas().get(y).getProductividad() + ".\nQuedan " + jugador.getJavalares() + " Javalares, "  + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                                     }
                                     else{
-                                        System.out.println("No alcanza para mejorar al Granjero.");
+                                        System.out.println("No alcanza para mejorar al/la Granjero/a " + nombrePersonaMejora);
                                     }
                                 }
                                 else if(jugador.getListEdificios().get(x).getListPersonas().get(y) instanceof Cientifico){
@@ -239,7 +239,7 @@ public class Javation {
                                         System.out.println("Se ha mejorado el/la Cientifico/a " + nombrePersonaMejora +". Ahora su nivel es " + jugador.getListEdificios().get(x).getListPersonas().get(y).getnivel() + " y su productividad es " + jugador.getListEdificios().get(x).getListPersonas().get(y).getProductividad() + ".\nQuedan " + jugador.getJavalares() + " Javalares, "  + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                                     }
                                     else{
-                                        System.out.println("No alcanza para mejorar al Cientifico.");
+                                        System.out.println("No alcanza para mejorar al/la Cientifico/a " + nombrePersonaMejora);
                                     }
                                 }
                                 else if(jugador.getListEdificios().get(x).getListPersonas().get(y) instanceof Herrero){
@@ -249,7 +249,7 @@ public class Javation {
                                         System.out.println("Se ha mejorado el/la Herrero/a " + nombrePersonaMejora +". Ahora su nivel es " + jugador.getListEdificios().get(x).getListPersonas().get(y).getnivel() + " y su productividad es " + jugador.getListEdificios().get(x).getListPersonas().get(y).getProductividad() + ".\nQuedan " + jugador.getJavalares() + " Javalares, "  + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                                     }
                                     else{
-                                        System.out.println("No alcanza para mejorar al Herrero.");
+                                        System.out.println("No alcanza para mejorar al/la Herrero/a " + nombrePersonaMejora);
                                     }
                                 }
                             }
@@ -271,7 +271,7 @@ public class Javation {
                                     System.out.println("Se ha mejorado el Granero " + nombreEdificioMejora + ". Ahora su nivel es " + jugador.getListEdificios().get(i).getnivel() + " y su capacidad es " + jugador.getListEdificios().get(i).getCapcidad() + ".\nQuedan " + jugador.getJavalares() + " Javalares, " + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                                 } 
                                 else{
-                                    System.out.println("No alcanza para mejorar el Granero");
+                                    System.out.println("No alcanza para mejorar el Granero " + nombreEdificioMejora);
                                 }
                             }
                             else if(jugador.getListEdificios().get(i) instanceof Laboratorio){
@@ -282,7 +282,7 @@ public class Javation {
                                     System.out.println("Se ha mejorado el Laboratorio " + nombreEdificioMejora + ". Ahora su nivel es " + jugador.getListEdificios().get(i).getnivel() + " y su capacidad es " + jugador.getListEdificios().get(i).getCapcidad() + ".\nQuedan " + jugador.getJavalares() + " Javalares, " + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                                 } 
                                 else{
-                                    System.out.println("No alcanza para mejorar el Laboratorio");
+                                    System.out.println("No alcanza para mejorar el Laboratorio " + nombreEdificioMejora);
                                 }
                             }
                             else if(jugador.getListEdificios().get(i) instanceof Herrería){
@@ -293,7 +293,7 @@ public class Javation {
                                     System.out.println("Se ha mejorado el Herrería " + nombreEdificioMejora + ". Ahora su nivel es " + jugador.getListEdificios().get(i).getnivel() + " y su capacidad es " + jugador.getListEdificios().get(i).getCapcidad() + ".\nQuedan " + jugador.getJavalares() + " Javalares, " + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
                                 } 
                                 else{
-                                    System.out.println("No alcanza para mejorar la Herrería");
+                                    System.out.println("No alcanza para mejorar la Herrería " + nombreEdificioMejora);
                                 }
                             }
                             else if(jugador.getListEdificios().get(i) instanceof ZonaComun){
@@ -307,7 +307,7 @@ public class Javation {
                                     
                                 } 
                                 else{
-                                    System.out.println("No alcanza para mejorar la ZonaComun");
+                                    System.out.println("No alcanza para mejorar la ZonaComun " + nombreEdificioMejora);
                                 }
                             }
                         }
@@ -325,60 +325,62 @@ public class Javation {
                         if(jugador.getListEdificios().get(j).getnombre().equals(moverAEdificio)){
                             for(int i = 0; i < jugador.getListPersonas().size();i++){
                                 if(jugador.getListPersonas().get(i).getnombre().equals(moverPersona)){
-                                    if(jugador.getListEdificios().get(j) instanceof Granero){
-                                        if(jugador.getListPersonas().get(i) instanceof Granjero){
-                                            jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
-                                            System.out.println("El/La Granjero/a " + moverPersona + " se movio al Granero " + moverAEdificio + ".");
+                                    if(jugador.getListEdificios().get(j).getListPersonas().size() <= jugador.getListEdificios().get(j).getCapcidad() ){
+                                        if(jugador.getListEdificios().get(j) instanceof Granero){
+                                            if(jugador.getListPersonas().get(i) instanceof Granjero){
+                                                jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
+                                                System.out.println("El/La Granjero/a " + moverPersona + " se movio al Granero " + moverAEdificio + ".");
+                                            }
+                                            else if(jugador.getListPersonas().get(i) instanceof Cientifico){
+                                                jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
+                                                System.out.println("El/La Cientifico/a " + moverPersona + " se movio al Granero " + moverAEdificio + ".");
+                                            }
+                                            else if(jugador.getListPersonas().get(i) instanceof Herrero){
+                                                jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
+                                                System.out.println("El/La Herrero/a " + moverPersona + " se movio al Granero " + moverAEdificio + ".");
+                                            }
                                         }
-                                        else if(jugador.getListPersonas().get(i) instanceof Cientifico){
-                                            jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
-                                            System.out.println("El/La Cientifico/a " + moverPersona + " se movio al Granero " + moverAEdificio + ".");
+                                        else if(jugador.getListEdificios().get(j) instanceof Laboratorio){
+                                            if(jugador.getListPersonas().get(i) instanceof Granjero){
+                                                jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
+                                                System.out.println("El/La Granjero/a " + moverPersona + " se movio al Laboratorio " + moverAEdificio + ".");
+                                            }
+                                            else if(jugador.getListPersonas().get(i) instanceof Cientifico){
+                                                jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
+                                                System.out.println("El/La Cientifico/a " + moverPersona + " se movio al Laboratorio " + moverAEdificio + ".");
+                                            }
+                                            else if(jugador.getListPersonas().get(i) instanceof Herrero){
+                                                jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
+                                                System.out.println("El/La Herrero/a " + moverPersona + " se movio al Laboratorio " + moverAEdificio + "+");
+                                            }
                                         }
-                                        else if(jugador.getListPersonas().get(i) instanceof Herrero){
-                                            jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
-                                            System.out.println("El/La Herrero/a " + moverPersona + " se movio al Granero " + moverAEdificio + ".");
+                                        else if(jugador.getListEdificios().get(j) instanceof Herrería){
+                                            if(jugador.getListPersonas().get(i) instanceof Granjero){
+                                                jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
+                                                System.out.println("El/La Granjero/a " + moverPersona + " se movio a la Herrería " + moverAEdificio + ".");
+                                            }
+                                            else if(jugador.getListPersonas().get(i) instanceof Cientifico){
+                                                jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
+                                                System.out.println("El/La Cientifico/a " + moverPersona + " se movio a la Herrería " + moverAEdificio + ".");
+                                            }
+                                            else if(jugador.getListPersonas().get(i) instanceof Herrero){
+                                                jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
+                                                System.out.println("El/La Herrero/a " + moverPersona + " se movio a la Herrería " + moverAEdificio + ".");
+                                            }
                                         }
-                                    }
-                                    else if(jugador.getListEdificios().get(j) instanceof Laboratorio){
-                                        if(jugador.getListPersonas().get(i) instanceof Granjero){
-                                            jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
-                                            System.out.println("El/La Granjero/a " + moverPersona + " se movio al Laboratorio " + moverAEdificio + ".");
-                                        }
-                                        else if(jugador.getListPersonas().get(i) instanceof Cientifico){
-                                            jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
-                                            System.out.println("El/La Cientifico/a " + moverPersona + " se movio al Laboratorio " + moverAEdificio + ".");
-                                        }
-                                        else if(jugador.getListPersonas().get(i) instanceof Herrero){
-                                            jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
-                                            System.out.println("El/La Herrero/a " + moverPersona + " se movio al Laboratorio " + moverAEdificio + "+");
-                                        }
-                                    }
-                                    else if(jugador.getListEdificios().get(j) instanceof Herrería){
-                                        if(jugador.getListPersonas().get(i) instanceof Granjero){
-                                            jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
-                                            System.out.println("El/La Granjer/a " + moverPersona + " se movio a la Herrería " + moverAEdificio + ".");
-                                        }
-                                        else if(jugador.getListPersonas().get(i) instanceof Cientifico){
-                                            jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
-                                            System.out.println("El/La Cientifico/a " + moverPersona + " se movio a la Herrería " + moverAEdificio + ".");
-                                        }
-                                        else if(jugador.getListPersonas().get(i) instanceof Herrero){
-                                            jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
-                                            System.out.println("El/La Herrero/a " + moverPersona + " se movio a la Herrería " + moverAEdificio + ".");
-                                        }
-                                    }
-                                    else if(jugador.getListEdificios().get(j) instanceof ZonaComun){
-                                        if(jugador.getListPersonas().get(i) instanceof Granjero){
-                                            jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
-                                            System.out.println("El/La Granjero/a " + moverPersona + " se movio a la ZonaComun " + moverAEdificio + ".");
-                                        }
-                                        else if(jugador.getListPersonas().get(i) instanceof Cientifico){
-                                            jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
-                                            System.out.println("El/La Cientifico/a " + moverPersona + " se movio a la ZonaComun " + moverAEdificio + ".");
-                                        }
-                                        else if(jugador.getListPersonas().get(i) instanceof Herrero){
-                                            jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
-                                            System.out.println("El/La Herrero/a " + moverPersona + " se movio a la ZonaComun " + moverAEdificio + ".");
+                                        else if(jugador.getListEdificios().get(j) instanceof ZonaComun){
+                                            if(jugador.getListPersonas().get(i) instanceof Granjero){
+                                                jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
+                                                System.out.println("El/La Granjero/a " + moverPersona + " se movio a la ZonaComun " + moverAEdificio + ".");
+                                            }
+                                            else if(jugador.getListPersonas().get(i) instanceof Cientifico){
+                                                jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
+                                                System.out.println("El/La Cientifico/a " + moverPersona + " se movio a la ZonaComun " + moverAEdificio + ".");
+                                            }
+                                            else if(jugador.getListPersonas().get(i) instanceof Herrero){
+                                                jugador.getListEdificios().get(j).agregar_persona(jugador.getListPersonas().get(i));
+                                                System.out.println("El/La Herrero/a " + moverPersona + " se movio a la ZonaComun " + moverAEdificio + ".");
+                                            }
                                         }
                                     }
                                     jugador.sacar_persona(moverPersona);
@@ -469,14 +471,14 @@ public class Javation {
                 }
 
                 else if(Respuesta.equals("11")){
-                    break;
+                    System.exit(0);
                 }
 
                 else{
                     System.out.println("No se encuentra esta opcion, intentalo de nuevo.");
                 }
 
-                System.out.println("¿Quieres terminar el turno? SI/NO: ");
+                System.out.println("¿Quieres terminar el turno? (Si quiere terminar el turno, responda SI): ");
                 String RespuestaTurno = entrada.next();
                 if(RespuestaTurno.equals("SI")){
                     turno = false;
@@ -548,30 +550,30 @@ public class Javation {
                 }
                 jugador.setJavalares(jugador.getJavalares() + jugador.getListJavapatos().get(j).visitar(jugador.getListPersonas()));
                 money = money + jugador.getListJavapatos().get(j).visitar(jugador.getListPersonas());
-                System.out.println("El Javapato " + jugador.getListJavapatos().get(j).getnombre() + " gano " + money + " Jvalares.");
+                System.out.println("El Javapato " + jugador.getListJavapatos().get(j).getnombre() + " gano " + money + " Javalares.");
             }
 
             for(int i = 0; i < jugador.getListPersonas().size(); i++){
-                if(jugador.getListPersonas().get(i).getEdad() <= 30){
+                if(jugador.getListPersonas().get(i).getEdad() < 29){
                     jugador.getListPersonas().get(i).envejecer();
                     System.out.println(jugador.getListPersonas().get(i).getnombre() + " cumplio " + jugador.getListPersonas().get(i).getEdad() + " años.");
                 }
                 else{
-                    jugador.sacar_persona(jugador.getListPersonas().get(i).getnombre());
                     personasFallecidas.add(jugador.getListPersonas().get(i).getnombre());
-                    System.out.println(jugador.getListPersonas().get(i).getnombre() + " fallecio.");
+                    jugador.sacar_persona(jugador.getListPersonas().get(i).getnombre());
+                    System.out.println(jugador.getListPersonas().get(i).getnombre() + " falleció.");
                 }
             }
             for(int j = 0; j < jugador.getListEdificios().size(); j++){
                 for(int x = 0; x < jugador.getListEdificios().get(j).getListPersonas().size(); x++){
-                    if(jugador.getListEdificios().get(j).getListPersonas().get(x).getEdad() <= 30){
+                    if(jugador.getListEdificios().get(j).getListPersonas().get(x).getEdad() < 29){
                         jugador.getListEdificios().get(j).getListPersonas().get(x).envejecer();
                         System.out.println(jugador.getListEdificios().get(j).getListPersonas().get(x).getnombre() + " cumplio " + jugador.getListEdificios().get(j).getListPersonas().get(x).getEdad() + " años.");
                     }
                     else{
-                        jugador.sacar_persona(jugador.getListEdificios().get(j).getListPersonas().get(x).getnombre());
                         personasFallecidas.add(jugador.getListEdificios().get(j).getListPersonas().get(x).getnombre());
-                        System.out.println(jugador.getListEdificios().get(j).getListPersonas().get(x).getnombre() + " fallecio.");
+                        jugador.getListEdificios().get(j).sacar_persona(jugador.getListEdificios().get(j).getListPersonas().get(x).getnombre());
+                        System.out.println(jugador.getListEdificios().get(j).getListPersonas().get(x).getnombre() + " falleció.");
                     }
                 }
             }
@@ -583,11 +585,7 @@ public class Javation {
                 }
             }
             System.out.println("Quedaron " + jugador.getJavalares() + " Javalares, " + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
-
         }
-        entrada.close();
-        
+        entrada.close();   
     }
 }
-
-    

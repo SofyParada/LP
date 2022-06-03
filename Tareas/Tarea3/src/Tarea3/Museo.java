@@ -1,4 +1,4 @@
-package Tareas.Tarea3.src.Tarea3;
+package Tarea3;
 
 import java.util.ArrayList;
 
@@ -23,13 +23,13 @@ public  class Museo implements Atraccion{
         int cantidad_de_personas_herreras = 0;
 
         for(int i = 0; i < personas.size(); i++){
-            if(personas.get(i).getnombre() == "Granjero"){
+            if(personas.get(i) instanceof Granjero){
                 cantidad_de_personas_granjeras++;
             }
-            if(personas.get(i).getnombre() == "Cienfico"){
+            if(personas.get(i) instanceof Cientifico){
                 cantidad_de_personas_cientificas++;
             }
-            if(personas.get(i).getnombre() == "Herrero"){
+            if(personas.get(i) instanceof Herrero){
                 cantidad_de_personas_herreras++;
             } 
         }

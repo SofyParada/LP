@@ -1,4 +1,4 @@
-package Tareas.Tarea3.src.Tarea3;
+package Tarea3;
 
 import java.util.ArrayList;
 
@@ -85,7 +85,7 @@ public abstract class Edificio{
     }
 
     public int es_granjero(Persona persona){
-        if(persona.getnombre() == "Granjero"){
+        if(persona instanceof Granjero){
             return 1;
         }
         else{
@@ -94,7 +94,7 @@ public abstract class Edificio{
     }
 
     public int es_cientifico(Persona persona){
-        if(persona.getnombre() == "Cientifico"){
+        if(persona instanceof Cientifico){
             return 1;
         }
         else{
@@ -103,7 +103,7 @@ public abstract class Edificio{
     }
 
     public int es_herrero(Persona persona){
-        if(persona.getnombre() == "Herrero"){
+        if(persona instanceof Herrero){
             return 1;
         }
         else{
