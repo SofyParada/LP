@@ -1,37 +1,8 @@
 Sofía Parada
 202004671-9
 
-JFLAGS = -g
-JC =javac
-.SUFFIXES:.java .class
-.java.class:
-	$(JC) $*.java
-
-CLASSES = \
-	Javation.java\
-	Jugador.java\
-	Persona.java\
-	Granjero.java\
-	Herrero.java\
-	Cientifico.java\
-	Edificio.java\
-	Granero.java\
-	Laboratorio.java\
-	Herrería.java\
-	ZonaComun.java\
-	Atraccion.java\
-	Feria.java\
-	Museo.java\
-	Javapato.java
-
-MAIN =Javation
-
-default:CLASSES
-
-classes:$(CLASSES:.java=.class)
-
-run: $(MAIN).class
-	$(JVM) $(MAIN) $(FILE)
-
-clean:\
-	$(RM) *.class
+En esta Tarea se utlizó el lenguaje Java con su compilador javac versión 13.07 o mayor, y se ejecutara el codigo
+Javation.java el cual inicializa la clase Jugador.java y las clases abtractas Persona.java y Edificio.java,
+que son las clases padres de Granjero.java, Cientifico.java, Herrero.java y Granero.java, Laboratorio.java, 
+Herrería.java, ZonaComun.java. También tenemos la interfaz Atraccion.java que esta implementada por las clases
+Feria.java, Museo.java y Javapato.java.

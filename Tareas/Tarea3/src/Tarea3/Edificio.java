@@ -84,6 +84,12 @@ public abstract class Edificio{
         return this.personas;
     }
 
+     /*
+     *Nombre de función: es_granjero
+     *Parametros: Persona persona
+     * Descripción: Identifica si la persona es de tipo Granjero.
+     * Retorna: int
+    */
     public int es_granjero(Persona persona){
         if(persona instanceof Granjero){
             return 1;
@@ -93,6 +99,12 @@ public abstract class Edificio{
         }
     }
 
+     /*
+     *Nombre de función: es_cientifico
+     *Parametros: Persona persona
+     * Descripción: Identifica si la persona es de tipi Cientifico.
+     * Retorna: int
+    */
     public int es_cientifico(Persona persona){
         if(persona instanceof Cientifico){
             return 1;
@@ -102,6 +114,12 @@ public abstract class Edificio{
         }
     }
 
+     /*
+     *Nombre de función: es_herrero
+     *Parametros: Persona persona
+     * Descripción: Identifica si la persona es de tipo Herrero
+     * Retorna: int
+    */
     public int es_herrero(Persona persona){
         if(persona instanceof Herrero){
             return 1;

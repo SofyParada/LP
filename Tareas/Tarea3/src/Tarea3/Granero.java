@@ -45,12 +45,9 @@ public  class Granero  extends Edificio{
                 }
             }
         }
-
         else{
             javalares = getListPersonas().size()*-2;
         }
-
-
         producir.add(0, javalares);
         producir.add(1, hierro);
         producir.add(2, trigo);

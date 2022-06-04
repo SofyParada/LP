@@ -14,10 +14,6 @@ public class Javation {
         System.out.println("BIENVENIDO(A) " + nombre);
 
         ArrayList<Persona> personasJugador = new ArrayList<>();
-        ArrayList<Persona> personasGranero = new ArrayList<>();
-        ArrayList<Persona> personasLabortorio = new ArrayList<>();
-        ArrayList<Persona> personasHerreria = new ArrayList<>();
-        ArrayList<Persona> personasZonaComun = new ArrayList<>();
         ArrayList<Edificio> edificios = new ArrayList<>();
         ArrayList<Feria> ferias = new ArrayList<>();
         ArrayList<Museo> museos = new ArrayList<>();
@@ -84,6 +80,7 @@ public class Javation {
                     String tipoEdificio = entrada.next();
                     if(tipoEdificio.equals("1")){
                         if(jugador.getJavalares() >= 10 && jugador.getHierro() >= 5 && jugador.getTrigo() >= 5){
+                            ArrayList<Persona> personasGranero = new ArrayList<>();
                             Granero granero = new Granero(nombreEdificio, 1, 10, personasGranero);
                             jugador.agregar_edificio(granero);
                             jugador.setJavalares(jugador.getJavalares() - 10);
@@ -97,6 +94,7 @@ public class Javation {
                     } 
                     else if(tipoEdificio.equals("2")){
                         if(jugador.getJavalares() >= 30 && jugador.getHierro() >= 10){
+                            ArrayList<Persona> personasLabortorio = new ArrayList<>();
                             Laboratorio laboratorio = new Laboratorio(nombreEdificio, 1, 5, personasLabortorio);
                             jugador.agregar_edificio(laboratorio);
                             jugador.setJavalares(jugador.getJavalares() - 30);
@@ -109,6 +107,7 @@ public class Javation {
                     } 
                     else if(tipoEdificio.equals("3")){
                         if(jugador.getJavalares() >= 20 && jugador.getHierro() >= 20){ 
+                            ArrayList<Persona> personasHerreria = new ArrayList<>();
                             Herrería herreria = new Herrería(nombreEdificio, 1, 8, personasHerreria);
                             jugador.agregar_edificio(herreria);
                             jugador.setJavalares(jugador.getJavalares() - 20);
@@ -121,12 +120,13 @@ public class Javation {
                     } 
                     else if(tipoEdificio.equals("4")){
                         if(jugador.getJavalares() >= 15 && jugador.getHierro() >= 3 && jugador.getTrigo() >= 3){ 
+                            ArrayList<Persona> personasZonaComun = new ArrayList<>();
                             ZonaComun zonacomun = new ZonaComun(nombreEdificio, 1, 6, personasZonaComun);                  
                             jugador.agregar_edificio(zonacomun);
                             jugador.setJavalares(jugador.getJavalares() - 15);
                             jugador.setHierro(jugador.getHierro() - 3);
                             jugador.setTrigo(jugador.getTrigo() - 3);
-                            System.out.println("Se ha creado la ZonaComun " + nombreEdificio + ".\nAhora tenemos " + jugador.getJavalares() + " Javalares, " + jugador.getHierro() + " Hierro y" + jugador.getTrigo() + " Trigo.");
+                            System.out.println("Se ha creado la ZonaComun " + nombreEdificio + ".\nAhora tenemos " + jugador.getJavalares() + " Javalares, " + jugador.getHierro() + " Hierro y " + jugador.getTrigo() + " Trigo.");
                         } 
                         else{
                             System.out.println("No se puede comprar el ZonaComun " + nombreEdificio);
@@ -183,7 +183,7 @@ public class Javation {
                 }
 
                 else if(Respuesta.equals("4")){
-                    System.out.println("¿Que persona quieres mejorar? ");
+                    System.out.println("Mejorar a una persona tiene un costo de 15 Javalares.\n¿Que persona quieres mejorar? ");
                     String nombrePersonaMejora = entrada.next();
                     for(int i = 0; i < jugador.getListPersonas().size(); i++){
                         if(jugador.getListPersonas().get(i).getnombre().equals(nombrePersonaMejora)){
@@ -258,7 +258,7 @@ public class Javation {
                 }
 
                 else if(Respuesta.equals("5")){
-                    System.out.println("¿Que Edificio quieres mejorar? ");
+                    System.out.println("Costos:\nGranero: 20 Javalares, 10 Hierro y 15 Trigo\nLaboratorio: 20 Javalares, 15 Hierro y 1o Tecnología\nHerrería: 20 Javalares y 20 Hierro\nZonaComun: 15 Javalares, 10 Hierro, 10 Trigo y 10 Tecnología \n¿Que Edificio quieres mejorar? (responde con el nombre del Edificio) ");
                     String nombreEdificioMejora = entrada.next();
                     for(int i = 0; i < jugador.getListEdificios().size(); i++){
                         if(jugador.getListEdificios().get(i).getnombre().equals(nombreEdificioMejora)){
@@ -382,8 +382,11 @@ public class Javation {
                                                 System.out.println("El/La Herrero/a " + moverPersona + " se movio a la ZonaComun " + moverAEdificio + ".");
                                             }
                                         }
+                                        jugador.sacar_persona(moverPersona);
                                     }
-                                    jugador.sacar_persona(moverPersona);
+                                    else{
+                                        System.out.println("No entran más personas en este Edificio. ");
+                                    }
                                 }
                             }
                         }
@@ -471,9 +474,9 @@ public class Javation {
                 }
 
                 else if(Respuesta.equals("11")){
+                    System.out.print("Finalización del juego.\n");
                     System.exit(0);
                 }
-
                 else{
                     System.out.println("No se encuentra esta opcion, intentalo de nuevo.");
                 }
@@ -489,35 +492,40 @@ public class Javation {
 
             for(int i = 0; i < jugador.getListEdificios().size(); i++){
                 if(jugador.getListEdificios().get(i) instanceof Granero){
-                    jugador.setJavalares(jugador.getJavalares() + jugador.getListEdificios().get(i).producir().get(0));
-                    jugador.setHierro(jugador.getHierro() + jugador.getListEdificios().get(i).producir().get(1));
-                    jugador.setTrigo(jugador.getTrigo() + jugador.getListEdificios().get(i).producir().get(2));
-                    jugador.setTecnologia(jugador.getTecnologia() + jugador.getListEdificios().get(i).producir().get(3));
-                    System.out.println("El Granero "+jugador.getListEdificios().get(i).getnombre() + " produjo " + jugador.getListEdificios().get(i).producir().get(0) + " Javalares, " + jugador.getListEdificios().get(i).producir().get(1) + " Hierro, " + jugador.getListEdificios().get(i).producir().get(2) + " Trigo, " + jugador.getListEdificios().get(i).producir().get(3) + " Tecnología.");
+                    if(jugador.getListEdificios().get(i).getListPersonas().size() != 0){
+                        jugador.setJavalares(jugador.getJavalares() + jugador.getListEdificios().get(i).producir().get(0));
+                        jugador.setHierro(jugador.getHierro() + jugador.getListEdificios().get(i).producir().get(1));
+                        jugador.setTrigo(jugador.getTrigo() + jugador.getListEdificios().get(i).producir().get(2));
+                        jugador.setTecnologia(jugador.getTecnologia() + jugador.getListEdificios().get(i).producir().get(3));
+                        System.out.println("El Granero "+jugador.getListEdificios().get(i).getnombre() + " produjo " + jugador.getListEdificios().get(i).producir().get(0) + " Javalares, " + jugador.getListEdificios().get(i).producir().get(1) + " Hierro, " + jugador.getListEdificios().get(i).producir().get(2) + " Trigo, " + jugador.getListEdificios().get(i).producir().get(3) + " Tecnología.");
+                    }
                 }
                 else if(jugador.getListEdificios().get(i) instanceof Laboratorio){
-                    jugador.setJavalares(jugador.getJavalares() + jugador.getListEdificios().get(i).producir().get(0));
-                    jugador.setHierro(jugador.getHierro() + jugador.getListEdificios().get(i).producir().get(1));
-                    jugador.setTrigo(jugador.getTrigo() + jugador.getListEdificios().get(i).producir().get(2));
-                    jugador.setTecnologia(jugador.getTecnologia() + jugador.getListEdificios().get(i).producir().get(3));
-                    System.out.println("El Laboratorio " + jugador.getListEdificios().get(i).getnombre() + " produjo " + jugador.getListEdificios().get(i).producir().get(0) + " Javalares, " + jugador.getListEdificios().get(i).producir().get(1) + " Hierro, " + jugador.getListEdificios().get(i).producir().get(2) + " Trigo, " + jugador.getListEdificios().get(i).producir().get(3) + " Tecnología.");
-               
+                    if(jugador.getListEdificios().get(i).getListPersonas().size() != 0){
+                        jugador.setJavalares(jugador.getJavalares() + jugador.getListEdificios().get(i).producir().get(0));
+                        jugador.setHierro(jugador.getHierro() + jugador.getListEdificios().get(i).producir().get(1));
+                        jugador.setTrigo(jugador.getTrigo() + jugador.getListEdificios().get(i).producir().get(2));
+                        jugador.setTecnologia(jugador.getTecnologia() + jugador.getListEdificios().get(i).producir().get(3));
+                        System.out.println("El Laboratorio " + jugador.getListEdificios().get(i).getnombre() + " produjo " + jugador.getListEdificios().get(i).producir().get(0) + " Javalares, " + jugador.getListEdificios().get(i).producir().get(1) + " Hierro, " + jugador.getListEdificios().get(i).producir().get(2) + " Trigo, " + jugador.getListEdificios().get(i).producir().get(3) + " Tecnología.");
+                    }
                 }
                 else if(jugador.getListEdificios().get(i) instanceof Herrería){
-                    jugador.setJavalares(jugador.getJavalares() + jugador.getListEdificios().get(i).producir().get(0));
-                    jugador.setHierro(jugador.getHierro() + jugador.getListEdificios().get(i).producir().get(1));
-                    jugador.setTrigo(jugador.getTrigo() + jugador.getListEdificios().get(i).producir().get(2));
-                    jugador.setTecnologia(jugador.getTecnologia() + jugador.getListEdificios().get(i).producir().get(3));
-                    System.out.println("La Herrería " + jugador.getListEdificios().get(i).getnombre() + " produjo " + jugador.getListEdificios().get(i).producir().get(0) + " Javalares, " + jugador.getListEdificios().get(i).producir().get(1) + " Hierro, " + jugador.getListEdificios().get(i).producir().get(2) + " Trigo, " + jugador.getListEdificios().get(i).producir().get(3) + " Tecnología.");
-               
+                    if(jugador.getListEdificios().get(i).getListPersonas().size() != 0){
+                        jugador.setJavalares(jugador.getJavalares() + jugador.getListEdificios().get(i).producir().get(0));
+                        jugador.setHierro(jugador.getHierro() + jugador.getListEdificios().get(i).producir().get(1));
+                        jugador.setTrigo(jugador.getTrigo() + jugador.getListEdificios().get(i).producir().get(2));
+                        jugador.setTecnologia(jugador.getTecnologia() + jugador.getListEdificios().get(i).producir().get(3));
+                        System.out.println("La Herrería " + jugador.getListEdificios().get(i).getnombre() + " produjo " + jugador.getListEdificios().get(i).producir().get(0) + " Javalares, " + jugador.getListEdificios().get(i).producir().get(1) + " Hierro, " + jugador.getListEdificios().get(i).producir().get(2) + " Trigo, " + jugador.getListEdificios().get(i).producir().get(3) + " Tecnología.");
+                    }
                 }
                 else if(jugador.getListEdificios().get(i) instanceof ZonaComun){
-                    jugador.setJavalares(jugador.getJavalares() + jugador.getListEdificios().get(i).producir().get(0));
-                    jugador.setHierro(jugador.getHierro() + jugador.getListEdificios().get(i).producir().get(1));
-                    jugador.setTrigo(jugador.getTrigo() + jugador.getListEdificios().get(i).producir().get(2));
-                    jugador.setTecnologia(jugador.getTecnologia() + jugador.getListEdificios().get(i).producir().get(3));
-                    System.out.println("La ZonaComun " + jugador.getListEdificios().get(i).getnombre() + " produjo " + jugador.getListEdificios().get(i).producir().get(0) + " Javalares, " + jugador.getListEdificios().get(i).producir().get(1) + " Hierro, " + jugador.getListEdificios().get(i).producir().get(2) + " Trigo, " + jugador.getListEdificios().get(i).producir().get(3) + " Tecnología.");
-               
+                    if(jugador.getListEdificios().get(i).getListPersonas().size() != 0){
+                        jugador.setJavalares(jugador.getJavalares() + jugador.getListEdificios().get(i).producir().get(0));
+                        jugador.setHierro(jugador.getHierro() + jugador.getListEdificios().get(i).producir().get(1));
+                        jugador.setTrigo(jugador.getTrigo() + jugador.getListEdificios().get(i).producir().get(2));
+                        jugador.setTecnologia(jugador.getTecnologia() + jugador.getListEdificios().get(i).producir().get(3));
+                        System.out.println("La ZonaComun " + jugador.getListEdificios().get(i).getnombre() + " produjo " + jugador.getListEdificios().get(i).producir().get(0) + " Javalares, " + jugador.getListEdificios().get(i).producir().get(1) + " Hierro, " + jugador.getListEdificios().get(i).producir().get(2) + " Trigo, " + jugador.getListEdificios().get(i).producir().get(3) + " Tecnología.");
+                    }
                 }
             }
 
@@ -559,9 +567,9 @@ public class Javation {
                     System.out.println(jugador.getListPersonas().get(i).getnombre() + " cumplio " + jugador.getListPersonas().get(i).getEdad() + " años.");
                 }
                 else{
-                    personasFallecidas.add(jugador.getListPersonas().get(i).getnombre());
-                    jugador.sacar_persona(jugador.getListPersonas().get(i).getnombre());
                     System.out.println(jugador.getListPersonas().get(i).getnombre() + " falleció.");
+                    personasFallecidas.add(jugador.getListPersonas().get(i).getnombre());
+                    jugador.sacar_persona(jugador.getListPersonas().get(i).getnombre()); 
                 }
             }
             for(int j = 0; j < jugador.getListEdificios().size(); j++){
@@ -571,9 +579,9 @@ public class Javation {
                         System.out.println(jugador.getListEdificios().get(j).getListPersonas().get(x).getnombre() + " cumplio " + jugador.getListEdificios().get(j).getListPersonas().get(x).getEdad() + " años.");
                     }
                     else{
+                        System.out.println(jugador.getListEdificios().get(j).getListPersonas().get(x).getnombre() + " falleció.");
                         personasFallecidas.add(jugador.getListEdificios().get(j).getListPersonas().get(x).getnombre());
                         jugador.getListEdificios().get(j).sacar_persona(jugador.getListEdificios().get(j).getListPersonas().get(x).getnombre());
-                        System.out.println(jugador.getListEdificios().get(j).getListPersonas().get(x).getnombre() + " falleció.");
                     }
                 }
             }
@@ -586,6 +594,7 @@ public class Javation {
             }
             System.out.println("Quedaron " + jugador.getJavalares() + " Javalares, " + jugador.getHierro() + " Hierro, " + jugador.getTrigo() + " Trigo y " + jugador.getTecnologia() + " Tecnología.");
         }
+        System.out.println("Finalización del juego.");
         entrada.close();   
     }
 }
