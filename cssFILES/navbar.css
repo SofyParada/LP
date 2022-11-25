@@ -1,0 +1,66 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: teal;
+    color: #fff;
+    position: fixed;
+    width: max-content;
+}
+.nav-links a {
+    color: #fff;
+}
+/* tamano de fuente*/
+.logo {
+    font-size: 32px;
+}
+/* menu de navegacion */
+.menu {
+    display: flex;
+    gap: 1em;
+    font-size: 18px;
+}
+.menu {
+    padding: 5px 14px;
+}
+/* Menu desplegable */
+.Profile {
+    position: relative; 
+}
+.DropDown {
+    background-color: rgb(1, 139, 139);
+    padding: 1em 0;
+    position: relative;
+    top: 5px; /*WITH RESPECT TO PARENT*/
+    display: none;
+    border-radius: 8px;
+    top: 35px;
+}
+.DropDown li + li {
+    margin-top: 10px;
+}
+.DropDown li {
+    padding: 0.5em 1em;
+    width: 8em;
+    text-align: center;
+}
+.DropDown li:hover {
+    background-color: #4c9e9e;
+}
+.Profile:hover .DropDown {
+    display: block;
+}
+a:hover{
+    background-color: #cabdbd;
+}
+a:link {
+    text-decoration: none;
+}
+.logo-image{
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: -6px;
+}
