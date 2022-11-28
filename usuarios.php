@@ -1,8 +1,14 @@
 <?php include('navbar.php') ?>
-<?php include('server.php') ?>
+
 
 <html>
  <head>
+ <style>
+        .listusuario{
+            padding-top: 120px;
+            
+        }
+    </style>
   <title>Profile</title>
  </head>
  <body>
@@ -13,13 +19,14 @@
     <table>
 
         <?php 
+        $db=mysqli_connect("localhost","root","","TareaBD2");
         $sql="SELECT * from usuarios";
         $result = mysqli_query($db, $sql);
         while($mostrar=mysqli_fetch_array($result)){
         ?>
         <tr>
             <td><?php echo $mostrar['username'] ?> </td>
-            <td><?php echo $mostrar['seguidores'] ?> seguidores <button type="subit" class="btn" name="seguir">Seguir</button></td>
+            <td><?php echo $mostrar['seguidores'] ?> seguidores <button type="sumbit" class="btn" name="seguir">Seguir</button></td>
         </tr>
         <?php } ?>
     </table>

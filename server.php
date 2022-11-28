@@ -129,4 +129,5 @@ if(isset($_POST['seguir'])){
     }
 
 }
+
 ?>
