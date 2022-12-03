@@ -5,7 +5,7 @@ session_start();
 $rut = NULL;
 $username = NULL;
 $email = NULL;
-$saldo = 30000;
+$saldo = 50000;
 $seguidores = 0;
 $errorName = NULL;
 $errorRut = NULL;
@@ -129,5 +129,19 @@ if(isset($_POST['seguir'])){
     }
 
 }
+
+if(isset($_POST['wishlist'])){
+
+    $ID_pel = $_POST['ID_pelicula'];
+    $user = $_SESSION['rut'];
+    echo $user;
+            
+    $wishquery = "INSERT INTO deseada (ID_pelicula, rut)
+    VALUES('$ID_pel', '$user')";
+    
+    mysqli_query($db, $wishquery);
+    
+}
+
 
 ?>

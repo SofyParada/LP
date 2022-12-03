@@ -2,6 +2,12 @@
 
 <html>
  <head>
+ <style>
+        .mainInicio{
+            padding-top: 140px;
+            
+        }
+    </style>
   <title>HOME</title>
  </head>
  <body>

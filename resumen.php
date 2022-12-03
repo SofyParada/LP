@@ -1,8 +1,9 @@
 <?php 
 include('navbar.php');
+include('server.php');
 ?>
 
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,8 +41,28 @@ include('navbar.php');
                     echo $rowpelis["Información"], nl2br("\n");
                     echo "<font size=5><b><u> Resumen: </u></b></font>", nl2br("\n");
                     echo $rowpelis["Resumen"], nl2br("\n");
-                    echo "<button type=submit name=wishlist>Wishlist</button>";
+
+                    ?>
+
+                    <form method="post" action="resumen.php">
+                        <div class="input-group">
+                        <label></label>
+                        <?php
+                        //echo "<input type='text' name='ID_pelicula' value='".$rowpelis['ID_pelicula']."'>"
+                        
+                        echo "<button type='submit' class='btn' name='wishlist' value='".$rowpelis['ID_pelicula']."'>Wishlist</button>";
+                        echo $rowpelis['ID_pelicula'];
+
+                        ?>
+                        </div>
+                    </form>
+
+                    <?php
+
+                    
+                    
                     echo "<button type=submit name=Favorites>Favorites</button>";
+
                     if(!empty($rowrent)){
                         while($rowrent = mysqli_fetch_array($resultrent)){
                             if($rowrent['rut'] != $rowusur['rut']){
@@ -62,15 +83,22 @@ include('navbar.php');
                             mysqli_query($db, $rentar);
                             header('location: resumen.php');
                                         
-                        }
-                        
+                        }     
                     }   
-
-
                 }
             }
         }
+
+        
+
+
     ?>
+    
+    </div>
+
+
+</body>
+    
     </div>
 
 

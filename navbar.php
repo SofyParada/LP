@@ -47,7 +47,7 @@
                 <div class="logo-image">
                     <img src="images/logo.png" style=" width: 90px;
                                                             height: 50px;
-                                                            border-radius: 100%;
+                                                            00
                                                             overflow: hidden;
                                                             margin-top: -2px;">
                 </div>
@@ -60,14 +60,16 @@
                         <a href="Movies.php">Movies</a>
                         <a href="Favorites.php">Favorites</a>
                         <a href="Wishlist.php">Wishlist</a>
-                        <input type="text" placeholder="Search..">
+
+                        <form action="Busqueda.php" method="get">
+                            <input type="text" placeholder="Search.." name='busqueda'>
+                            <input type="submit" name="buscar" value="buscar">
+                        </form>
+                        
                         <li class="Profile">
                             <a href="Profile.php"><p><?php echo $_SESSION['username']; ?></p></a>
                             <ul class="DropDown">
                                 <li><a href="Profile.php">Profile</a></li>
-                                <li><a href="Followers.php">Followers</a></li>
-                                <li><a href="Followed.php">Followed</a></li>
-                                <li><a href="usuarios.php">Otros usuarios</a></li>
                                 <li><a href="Califications.php">Califications</a></li>
                                 <li><p><a  href="login.php?logout='1'" style="color: red;">logout </a></li>
                             </ul>
@@ -79,6 +81,8 @@
             <!--<p> <a href="login.php?logout='1'" style="color: red;">logout</a> </p>-->
         <?php endif ?>
     </div>
+
+    
 </body>
 
 
